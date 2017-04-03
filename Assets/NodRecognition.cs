@@ -6,6 +6,7 @@ public class NodRecognition : MonoBehaviour {
 	private Vector3[] angles;
 	private int index;
 	private Vector3 centreAngle; 
+	public GameObject responsiveObject; 
 
 	// Use this for initialization
 	void Start () {
@@ -16,7 +17,7 @@ public class NodRecognition : MonoBehaviour {
 	void Update () {
 		angles [index] = GvrViewer.Instance.HeadPose.Orientation.eulerAngles;
 		index++;
-		if (index == 80) {
+		if (index == 80) { //checks the angle every 80 frames?
 			CheckMovement ();
 			ResetGesture ();
 		}
@@ -41,25 +42,25 @@ public class NodRecognition : MonoBehaviour {
 		if (down) {
 			print ("User nodded"); 
 			//for tutorial purposes
-			//responsiveObject.GetComponent<Renderer>().material.color = Color.green;
+			responsiveObject.GetComponent<Renderer>().sharedMaterial.color = Color.green; 
 		}
 
 		if (left) {
 			print ("User looked left"); 
 			//fill in 
-			//for tutorial purposes
-			//responsiveObject.GetComponent<Renderer>().material.color = Color.blue;
+			//for tustorial purposes
+			responsiveObject.GetComponent<Renderer>().sharedMaterial.color = Color.blue;
 		}
 		if (up) {
 			print ("User looked up"); 
 			//fill in
-			//responsiveObject.GetComponent<Renderer>().material.color = Color.red;
+			responsiveObject.GetComponent<Renderer>().sharedMaterial.color = Color.red;
 		}
 		if  (right) {
 			print ("User looked right"); 
 			//fill in
 			//for tutorial purposes
-			//responsiveObject.GetComponent<Renderer>().material.color = Color.yellow;
+			responsiveObject.GetComponent<Renderer>().sharedMaterial.color = Color.yellow;
 		}
 
 	}
