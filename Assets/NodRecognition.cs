@@ -26,15 +26,13 @@ public class NodRecognition : MonoBehaviour {
 	void CheckMovement() {
 		bool right = false, left = false, up = false, down = false; 
 		for (int i = 0; i < 80; i++) {
-			if (angles [i].x > centreAngle.x + 20.0f && !up) {
+			if (angles [i].x > centreAngle.x + 15.0f && !up) {
 				up = true; 
-			} else if (angles [i].x < centreAngle.x - 20.0f && !down) {
+			} else if (angles [i].x < centreAngle.x - 15.0f && !down) {
 				down = true; 
-			}
-
-			if (angles [i].y < centreAngle.y - 20.0f && !left) {
+			} else if (angles [i].y < centreAngle.y - 15.0f && !left) {
 				left = true; 
-			} else if (angles [i].x > centreAngle.x + 20.0f && !right) {
+			} else if (angles [i].y > centreAngle.y + 15.0f && !right) {
 				right = true; 
 			}
 		}
