@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class PlayerMovement : MonoBehaviour {
-
+public class PlayerMovement : WedgeInteraction1 {
+	//this.clicked = clicked; 
 	public float speed = 3.0f;
-	Rigidbody rbody;
+	public static Rigidbody rbody;
 
 
 	// Use this for initialization
@@ -19,7 +20,9 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		if(Input.touchCount>0||Input.GetMouseButton(0))
-			rbody.MovePosition(transform.position+transform.forward*Time.deltaTime*speed);
+		if (WedgeInteraction1.clicked) {
+			Vector3 cylindarpos = new Vector3 (-16, 2, 10);
+			rbody.MovePosition (cylindarpos); 
+		}
 	}
 }

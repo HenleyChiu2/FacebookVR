@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CubeInteraction : MonoBehaviour {
+public class WedgeInteraction1 : MonoBehaviour {
 
-	private float timer;
+	public float timer;
 	public float gazeTime = 2f; 
-	private bool gazedAt; 
-	private CharacterController cc;
-	public float speed = 3.0f;
-	public Transform vrCamera;
+	public bool gazedAt; 
+	public bool clicked; 
 
 
 	void Start () {
@@ -18,14 +16,14 @@ public class CubeInteraction : MonoBehaviour {
 	}
 
 	public void OnGazeEnter(){
-	
+
 	}
 
 	public void OnGazeExit(){
 
 	}
 
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (gazedAt == true) {
@@ -36,9 +34,7 @@ public class CubeInteraction : MonoBehaviour {
 			if (timer >= gazeTime) {
 				ExecuteEvents.Execute (gameObject, new PointerEventData (EventSystem.current), ExecuteEvents.pointerClickHandler);
 
-				Transform child = transform.GetChild (0);
-				Vector3 newScale = new Vector3(2,2,2);
-				child.localScale = newScale; 
+
 
 				timer = 0f; 
 				GetComponent<Collider> ().enabled = false; 
@@ -59,7 +55,11 @@ public class CubeInteraction : MonoBehaviour {
 		gazedAt = false; 
 	}
 	public void PointerClick() {
-		//Debug.Log ("Pointer Click");
-		//Vector3 forward = vrCamera.TransformDirection(Vector3)
+		Debug.Log ("Pointer Click");
+		clicked = true;
+		Vector3 cylindarpos = new Vector3 (-16, 2, 10);
+		PlayerMovement.rbody.MovePosition (cylindarpos);
+
+
 	}
 }
