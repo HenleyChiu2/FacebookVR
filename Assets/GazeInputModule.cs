@@ -41,9 +41,7 @@ using UnityEngine.EventSystems;
 ///
 /// GazeInputModule emits the following events: _Enter_, _Exit_, _Down_, _Up_, _Click_, _Select_,
 /// _Deselect_, and _UpdateSelected_.  Scroll, move, and submit/cancel events are not emitted.
-
 [AddComponentMenu("Cardboard/GazeInputModule")]
-
 public class GazeInputModule : BaseInputModule {
 	/// Determines whether gaze input is active in VR Mode only (`true`), or all of the
 	/// time (`false`).  Set to false if you plan to use direct screen taps or other
@@ -54,12 +52,12 @@ public class GazeInputModule : BaseInputModule {
 	/// Time in seconds between the pointer down and up events sent by a Cardboard trigger.
 	/// Allows time for the UI elements to make their state transitions.  If you turn off
 	/// _TapIsTrigger_ in Cardboard, then this setting has no effect.
-
+	[HideInInspector]
 	public float clickTime = 0.1f;  // Based on default time for a button to animate to Pressed.
 
 	/// The pixel through which to cast rays, in viewport coordinates.  Generally, the center
 	/// pixel is best, assuming a monoscopic camera is selected as the `Canvas`' event camera.
-
+	[HideInInspector]
 	public Vector2 hotspot = new Vector2(0.5f, 0.5f);
 
 	private PointerEventData pointerData;
@@ -323,3 +321,4 @@ public class GazeInputModule : BaseInputModule {
 		cardboardPointer.OnGazeDisabled();
 	}
 }
+
