@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CubeInteraction : MonoBehaviour {
+public class TeleportOnView : MonoBehaviour {
 
 	private float timer;
 	public float gazeTime = 2f; 
@@ -12,20 +12,23 @@ public class CubeInteraction : MonoBehaviour {
 	public float speed = 3.0f;
 	public Transform vrCamera;
 	public GameObject other;
+	public int posX = 15;
+	public int posY = 10;
+	public int posZ = 20;
 
 	void Start () {
 		//timer = 0; 
 	}
 
 	public void OnGazeEnter(){
-	
+
 	}
 
 	public void OnGazeExit(){
 
 	}
 
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (gazedAt == true) {
@@ -35,10 +38,7 @@ public class CubeInteraction : MonoBehaviour {
 
 			if (timer >= gazeTime) {
 				ExecuteEvents.Execute (gameObject, new PointerEventData (EventSystem.current), ExecuteEvents.pointerClickHandler);
-				other.transform.position = new Vector3 (15, 20, 10);
-//				Transform child = transform.GetChild (0);
-//				Vector3 newScale = new Vector3(2,2,2);
-//				child.localScale = newScale; 
+				other.transform.position = new Vector3 (posX, posY, posZ);
 
 				timer = 0f; 
 				GetComponent<Collider> ().enabled = false; 
@@ -62,4 +62,6 @@ public class CubeInteraction : MonoBehaviour {
 		//Debug.Log ("Pointer Click");
 		//Vector3 forward = vrCamera.TransformDirection(Vector3)
 	}
-}
+
+	}
+

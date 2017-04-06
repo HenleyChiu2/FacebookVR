@@ -8,7 +8,7 @@ public class WedgeInteraction1 : MonoBehaviour {
 	public float timer;
 	public float gazeTime = 2f; 
 	public bool gazedAt; 
-	public bool clicked; 
+	public static bool clicked; 
 
 
 	void Start () {
