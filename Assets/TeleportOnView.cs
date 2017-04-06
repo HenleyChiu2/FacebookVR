@@ -41,7 +41,7 @@ public class TeleportOnView : MonoBehaviour {
 				other.transform.position = new Vector3 (posX, posY, posZ);
 
 				timer = 0f; 
-				GetComponent<Collider> ().enabled = false; 
+//				GetComponent<Collider> ().enabled = false; 
 
 			}
 		}
